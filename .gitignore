@@ -1,4 +1,5 @@
 docs
+docs/*
 _test_
 _test_/*
 _bkup_
