@@ -5,7 +5,7 @@ Tools for obtaining IP information like broadcast, network, etc.
 
 __author__ = 'Todd Wintermute'
 __version__ = '0.0.3'
-__date__ = '2023-07-10'
+__date__ = '2024-04-14'
 
 import argparse
 import ipaddress
@@ -62,7 +62,7 @@ def interactive_mode():
 
 def print_subnet_info(subnet, filters):
     subnet = ' '.join(subnet)
-    subnet = re.sub('(\s|/)+', '/', subnet)
+    subnet = re.sub(r'(\s|/)+', r'/', subnet)
     network = ipaddress.ip_network(subnet, strict=False)
     netmask = network.netmask
     netmaskbits = network.prefixlen
@@ -73,10 +73,10 @@ def print_subnet_info(subnet, filters):
     total_hosts = network.num_addresses - 2
     items = {
         'network': f'Network:      {network}',
-        'netmask': f'Netmask:      {netmask}', 
-        'netmaskbits': f'Netmask_Bits: {netmaskbits}', 
+        'netmask': f'Netmask:      {netmask}',
+        'netmaskbits': f'Netmask_Bits: {netmaskbits}',
         'networkaddr': f'Network_Addr: {networkaddr}',
-        'hostmin': f'Host_Min:     {hostmin}', 
+        'hostmin': f'Host_Min:     {hostmin}',
         'hostmax': f'Host_Max:     {hostmax}',
         'broadcast': f'Broadcast:    {broadcast}',
         'numhosts': f'Total_Hosts:  {total_hosts}',
